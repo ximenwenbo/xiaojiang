@@ -2,110 +2,205 @@
 <!----header---->
 {include  file="pub/head"}
 <!----banner---->
-<div id="banner">
-    <div id="myCarousel" class="carousel slide">
-        <!-- 轮播（Carousel）指标 -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <!-- 轮播（Carousel）项目 -->
-        <div class="carousel-inner">
-            <div class="item active">
-                <img src="{:substr($first.img_path,1)}" >
+<style>
 
-            </div>
-            <div class="item">
-                <img src="{:substr($second,1)}" >
-            </div>
-            <div class="item">
-                <img src="{:substr($third,1)}" >
-            </div>
-        </div>
-        <!-- 轮播（Carousel）导航 -->
-        <a class="carousel-control left" href="#myCarousel"
-           data-slide="prev">
-            <div><i class="fa fa-angle-left"></i></div>
-        </a>
-        <a class="carousel-control right" href="#myCarousel"
-           data-slide="next">
-            <div><i class="fa fa-angle-right"></i></div>
-        </a>
+    @media screen and (min-width: 1201px) {
+        *{
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        .ddd{
+            display: none;
+        }
+        .fff{
+            display: none;
+        }
+
+        .aaa{
+            display: block;
+            margin-bottom: 100px;
+        }
+        .banner_box{
+            position: relative; /*attention*/
+            width: 100%;
+            height: 550px;
+            overflow: hidden;
+        }
+        .banner_images{
+            position: absolute; /*attention*/
+            left: 0;
+            width: 400%; /*attention please*/
+        }
+        .banner_img{
+            float: left;
+            width: 25%; /*attention please*/
+            height: 550px;
+        }
+        .banner_img img{
+            width: 100%;
+            height: 550px;
+        }
+
+        .switcher{
+            position: absolute;
+            top: 285px;
+            width: 100%;
+            display: none;
+        }
+        .switcher p{
+            height: 50px;
+            width: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            background: rgba(0, 0, 0, .8);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .switcher .prev{
+            float: left;
+            margin-left: 50px
+        }
+        .switcher .next{
+            float: right;
+            margin-right: 50px;
+        }
+        .banner_box:hover .switcher{
+            display: block;
+        }
+        .points{
+            position: absolute;
+            left: 50%;
+            bottom: 20px;
+            width: 400px;
+            margin-left: -200px;
+            overflow: hidden;
+        }
+        .points li{
+            width: 100px;
+            height: 5px;
+            background: rgba(0, 0, 0, .8);
+            float: left;
+            list-style: none;
+            cursor: Crosshair;
+        }
+        .points li.point_on{
+            background:white;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        *{
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+
+        .aaa{
+            display: block;
+            margin-bottom: 20px;
+        }
+        .banner_box{
+            position: relative; /*attention*/
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+        }
+        .banner_images{
+            position: absolute; /*attention*/
+            left: 0;
+            width: 400%; /*attention please*/
+        }
+        .banner_img{
+            float: left;
+            width: 25%; /*attention please*/
+            height: 150px;
+        }
+        .banner_img img{
+            width: 100%;
+            height: 150px;
+        }
+
+        .switcher{
+            position: absolute;
+            top: 285px;
+            width: 100%;
+            display: none;
+        }
+        .switcher p{
+            height: 50px;
+            width: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+            background: rgba(0, 0, 0, .8);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .switcher .prev{
+            float: left;
+            margin-left: 50px
+        }
+        .switcher .next{
+            float: right;
+            margin-right: 50px;
+        }
+        .banner_box:hover .switcher{
+            display: block;
+        }
+        .points{
+            position: absolute;
+            left: 50%;
+            bottom: 5px;
+            width: 400px;
+            margin-left: -30px;
+            overflow: hidden;
+        }
+        .points li{
+            width: 20px;
+            height: 5px;
+            background: rgba(0, 0, 0, .8);
+            float: left;
+            list-style: none;
+            cursor: Crosshair;
+        }
+        .points li.point_on{
+            background:white;
+        }
+
+    }
+
+
+</style>
+
+
+<div class="banner_box">
+    <div class="banner_images">
+        {volist name="inf" id="v"}
+        <div class="banner_img"><img src="{:substr($v.img_path,1)}" alt="bannerThree"></div>
+        {/volist}
+
+
     </div>
-</div>
-<div id="service">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="title">
-                    <div>
-                        <h2>木瓜 - <span>服务</span></h2>
-                        <p>Small Craftsman Service</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 paddnone">
-                <a href="/home/about/index.html">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{:config('home_images')}/icon_pic1.jpg">
-                        </div>
-                        <div class="service-hover">
-                            <img src="{:config('home_images')}/HD-logo.png">
-                            <h3>关于木瓜</h3>
-                            <p>木瓜文化致力于为客户提供更好的服务 严谨的态度</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 paddnone">
-                <a href="/home/news/index.html">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{:config('home_images')}/icon_pic2.jpg">
-                        </div>
-                        <div class="service-hover">
-                            <img src="{:config('home_images')}/news-icon.png">
-                            <h3>新闻中心</h3>
-                            <p>发布浏览业内消息 公司最新状态 参与活动状态</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 paddnone">
-                <a href="/home/product/index.html">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{:config('home_images')}/icon_pic1.jpg">
-                        </div>
-                        <div class="service-hover">
-                            <img src="{:config('home_images')}/case-icon.png">
-                            <h3>木瓜服务</h3>
-                            <p>智能家居 学习玩具 技术支持</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 paddnone">
-                <a href="/home/contact/index.html">
-                    <div class="service-item">
-                        <div class="service-img">
-                            <img src="{:config('home_images')}/icon_pic2.jpg">
-                        </div>
-                        <div class="service-hover">
-                            <img src="{:config('home_images')}/tel-icon.png">
-                            <h3>联系我们</h3>
-                            <p>业务合作 项目咨询可联系我们进一步交流</p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
+
+    <div class="switcher">
+        <p class="prev">←</p>
+        <p class="next">→</p>
     </div>
+
+    <ul class="points">
+        <li class="point_on"></li>
+        <li></li>
+        <li></li>
+
+    </ul>
 </div>
+
 <!----about---->
 <!--<div id="about">-->
     <!--<div class="container">-->
@@ -158,6 +253,79 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div  class="aaa" id="service">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title">
+                    <div>
+                        <h2>木瓜 - <span>服务</span></h2>
+                        <a href="tel:"></a>
+                        <p>Small Craftsman Service</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 paddnone">
+                <a href="/home/about/index.html">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="{:config('home_images')}/icon_pic1.jpg">
+                        </div>
+                        <div class="service-hover">
+                            <img src="{:config('home_images')}/HD-logo.png">
+                            <h3>关于木瓜</h3>
+                            <p>木瓜文化致力于为客户提供更好的服务 严谨的态度</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 paddnone">
+                <a href="/home/news/index.html">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="{:config('home_images')}/icon_pic2.jpg">
+                        </div>
+                        <div class="service-hover">
+                            <img src="{:config('home_images')}/news-icon.png">
+                            <h3>新闻中心</h3>
+                            <p>发布浏览业内消息 公司最新状态 参与活动状态</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 paddnone">
+                <a href="/home/product/index.html">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="{:config('home_images')}/icon_pic1.jpg">
+                        </div>
+                        <div class="service-hover">
+                            <img src="{:config('home_images')}/case-icon.png">
+                            <h3>木瓜服务</h3>
+                            <p>智能家居 学习玩具 空调批发</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 paddnone">
+                <a href="/home/contact/index.html">
+                    <div class="service-item">
+                        <div class="service-img">
+                            <img src="{:config('home_images')}/icon_pic2.jpg">
+                        </div>
+                        <div class="service-hover">
+                            <img src="{:config('home_images')}/tel-icon.png">
+                            <h3>联系我们</h3>
+                            <p>业务合作 项目咨询可联系我们进一步交流</p>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -241,6 +409,48 @@
 
     $(".case-item").each(function (i) {
         $(this).show($(".case-hover").eq(i));
+    });
+</script>
+<script>
+    $(function(){
+        var img_length = $('.banner_img').length; //图片的张数
+        var i  = 1;
+
+        //3
+
+        function banner(){ //轮播函数
+            if(i < 0){
+                i = img_length - 1;
+            }
+            if(i > img_length - 1){
+                i = 0;
+            }
+            $('.banner_images').animate({'left': (-i*100)+'%'});
+            $('.points li').eq(i).addClass('point_on').siblings().removeClass();
+            i++;
+        }
+        var banner_timer = setInterval(banner, 3000);
+
+        $('.switcher p').hover(function(){	//鼠标移入左右切换箭头清除定时器使轮播停止
+            clearInterval(banner_timer);
+        },function(){	//鼠标移出切换箭头还原定时器，这里为避免定时器重复 还将定时器赋值给上边定义的banner_timer变量
+            banner_timer = setInterval(banner, 3000);
+        });
+
+        $('.switcher p').click(function(){	//点击左右箭头使图片左右切换
+            if($(this).attr('class') == 'prev'){
+                i-=2;
+                banner();
+            }else{
+                i += 1;
+                banner();
+            }
+        })
+
+        $('.points li').click(function(){	//点击相应的焦点跳转到对应图片
+            i = $(this).index();
+            banner();
+        });
     });
 </script>
 {include file="pub/foot"}

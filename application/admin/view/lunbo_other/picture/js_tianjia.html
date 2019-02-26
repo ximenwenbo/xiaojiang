@@ -1,0 +1,91 @@
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript">
+
+
+    //商品logo图片上传维护
+    $(function(){
+        new HHuploadify({
+            container: '#imgpath', //上传按钮容器
+            auto: true,             //选择图片后自动上传
+            single: true,           //每次只能上传一张图片
+            chooseText: '上传图片',     //上传图片按钮文字提示
+            url: '{:url("pics_up")}',       //上传图片服务器端接收处理地址
+            field: 'mypics',        //定义一个mylogo的名字，代表服务器端是通过$_FILES['mylogo']的方式接收附件
+//            files: [    //显示商品原有的图片效果
+//                {
+//                    path: $('#goods_logo').val(),
+//                },
+//            ],
+
+
+
+
+            //获得服务器端返回回来的图片上传相关信息
+            //hhuploadify本身有 onUploadSuccess 事件，表示服务器图片上传成功后要调用执行
+            //参数file：是当前正在被上传附件的客户端浏览器的dom表现形式
+            //参数msg：代表服务器端返回的数据，字符串格式
+            onUploadSuccess:function(file,msg){
+                //console.log(msg);
+                var obj = JSON.parse(msg);
+                if(obj.status=='success'){
+                    //把图片路径名信息添加进form表单域里边
+                    $('[name=img]').val(obj.pathfilename);
+                    layer.msg('上传图片成功',{icon:6,time:3000});
+                }else{
+                    layer.msg('上传图片失败【'+obj.errorinfo+'】',{icon:5,time:3000});
+                }
+            },
+            //上传图片被删除后触发执行的事件函数
+            //清除goods_logo的图片路径名信息
+            onRemoved:function(file){
+                //file: 被删除图片的客户端“dom对象”体现
+                $('#img').val('');
+            }
+        })
+    });
+
+
+
+    //页面加载完毕后，给form表单设置submit提交事件
+    $(function(){
+        $('#edit').submit(function(evt){
+            evt.preventDefault();//阻止浏览器提交动作
+
+            //获得修改图片的form表单信息
+            //serialize():把form表单域信息组织为请求字符串样子
+            //            name=value&name=value&name=value...
+            var shuju = $(this).serialize();
+
+
+
+            //ajax传递数据到服务器端存储
+            $.ajax({
+
+                //url:'{:url("admin/lunbo_first/xiugai")}',
+                url:'{:url("tianjia","",false)}',
+                dataType:'json',
+                data:shuju,
+                type:'post',
+                success:function(msg){
+                    if(msg.info==1){
+                        layer.alert('添加图片成功',{icon:6},function(){
+                            //下述① 和 ②执行执行顺序要求
+                            //① 在"父级"页面把新图片刷新出来
+                            parent.window.location.href=parent.window.location.href;
+                            //② 关闭修改图片的弹框表单页面
+                            layer_close();
+                        });
+                    }else{
+                        //layer.alert('失败【'+msg.errorinfo+'】',{icon:5},function(){
+                            //② 关闭添加商品的弹框表单页面
+                            //layer_close();
+                        //});
+                        layer.alert('添加图片失败【'+msg.errorinfo+'】',{icon:5});
+                    }
+                }
+            });
+        });
+    });
+
+</script>
+<!--/请在上方写此页面业务相关的脚本-->

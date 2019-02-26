@@ -4,6 +4,10 @@
 <meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
 <meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
 </head>
+<script type="text/javascript" charset="utf-8"
+		src="{:config('plugin')}ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8"
+		src="{:config('plugin')}ueditor/ueditor.all.min.js"> </script>
 <body>
 <article class="page-container">
 	<form action="" method="post" class="form form-horizontal" id="edit">
@@ -26,7 +30,26 @@
 				<input type="text" class="input-text" value="{$info.profile}" placeholder=""  name="profile">
 			</div>
 		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>毕业院校：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$info.school}"   name="school">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>座右铭：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$info.motto}" placeholder=""  name="motto">
+			</div>
+		</div>
 
+
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>获得学位：</label>
+			<div class="formControls col-xs-8 col-sm-9">
+				<input type="text" class="input-text" value="{$info.degree}" placeholder=""  name="degree">
+			</div>
+		</div>
 
 		<link rel="stylesheet" href="{:config('plugin')}hhuploadify/HHuploadify.css" />
 		<script src="{:config('plugin')}hhuploadify/HHuploadify.js"></script>
@@ -38,6 +61,15 @@
 			<input type="hidden" id="img_path" name="img_path"
 				   value="{:substr($info.img_path,1)}" />
 
+		</div>
+		<div class="row cl">
+			<label class="form-label col-xs-4 col-sm-3">职业经历：</label>
+
+			<div class="formControls col-xs-8 col-sm-9">
+
+               <textarea id="describe" name="describe"
+						 style="width:540px;height:180px;">{$info.describe}</textarea>
+			</div>
 		</div>
 
 		<div class="row cl">

@@ -9,9 +9,24 @@ use app\admin\model\Manager;
 class ManagerController extends Controller{
 
     public function login(Request $request){
+
         if ($request->ispost()){
+
             //判断验证码
             $code = $request->post('verify_code');
+
+
+         $online = $request->post('online');
+            $name = $request->post('mg_name');
+            $pwd = $request->post('mg_pwd');
+
+
+
+
+
+
+
+
             if (captcha_check($code)) {
 
                 //获得账号信息
@@ -24,6 +39,13 @@ class ManagerController extends Controller{
 
                     session('mg_id', $exists->mg_id);
                     session('mg_name', $exists->mg_name);
+                    if ($online){
+                        setcookie('name',$name,time()+3600);
+                        setcookie('pwd',$pwd,time()+3600);
+                    }
+
+
+
                     //跳转到后台页面
                     $this->redirect('index/index');
                 } else {

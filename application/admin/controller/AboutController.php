@@ -5,6 +5,7 @@ namespace app\admin\controller;
 use app\admin\model\Tel;
 use think\cache\driver\Redis;
 use think\Controller;
+use think\Db;
 use think\Request;
 use think\Route;
 use app\admin\model\Shouye;
@@ -166,6 +167,30 @@ class AboutController extends Controller
         }
     }
 
+
+    /**
+     * @return  seo设置
+     */
+        public function seo(Request $request){
+                if ($request->isPost()){
+                       $data = $request->post();
+                   $res = Db::name('seo')->where('id','=',1)->update($data);
+
+                     if ($res){
+                         return ['info'=>1];
+                     }else{
+                         return ['info'=>0];
+                     }
+                }else{
+
+                    $info = Db::name('seo')->select();
+
+                  $info = $info[0];
+
+                  $this->assign('info',$info);
+                    return $this->fetch();
+                }
+        }
 
 
 }

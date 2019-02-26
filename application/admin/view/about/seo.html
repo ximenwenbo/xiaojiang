@@ -1,0 +1,59 @@
+{include file="pub/head"}
+<title>添加管理员 - 管理员管理 - H-ui.admin v3.1</title>
+<script type="text/javascript" charset="utf-8"
+        src="{:config('plugin')}ueditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8"
+        src="{:config('plugin')}ueditor/ueditor.all.min.js"> </script>
+<meta name="keywords" content="H-ui.admin v3.1,H-ui网站后台模版,后台模版下载,后台管理系统模版,HTML后台模版下载">
+<meta name="description" content="H-ui.admin v3.1，是一款由国人开发的轻量级扁平化网站后台模板，完全免费开源的网站后台管理系统模版，适合中小型CMS后台系统。">
+</head>
+<body>
+<article class="page-container">
+    <form class="form form-horizontal" id="form-admin-add" method="post"  action="">
+
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>标题：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$info.title ?? ''}" placeholder=""  name="title">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>关键词：</label>
+            <div class="formControls col-xs-8 col-sm-9">
+                <input type="text" class="input-text" value="{$info.keywords ?? ''}" placeholder=""  name="keywords">
+            </div>
+        </div>
+        <div class="row cl">
+            <label class="form-label col-xs-4 col-sm-3">描述：</label>
+
+            <div class="formControls col-xs-8 col-sm-9">
+
+               <textarea id="detail_one" name="content"
+                         style="width:540px;height:180px;">{$info.content ?? ''}</textarea>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="row cl">
+            <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;修改&nbsp;&nbsp;">
+            </div>
+        </div>
+    </form>
+</article>
+
+
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="{:config('admin_lib')}jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="{:config('admin_lib')}jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="{:config('admin_lib')}jquery.validation/1.14.0/messages_zh.js"></script>
+
+<!--/请在上方写此页面业务相关的脚本-->
+{include file="pub/foot"}
+{include file="about/js_seo"}

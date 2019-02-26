@@ -14,6 +14,8 @@ class IndexController extends Controller
     public function index()
     {
 
+
+
 //       $kehuduan = $_SERVER['REMOTE_ADDR']; //客户端IP，有可能是用户的IP，也可能是代理的IP。
 //
 //
@@ -25,35 +27,32 @@ class IndexController extends Controller
         //获取联系方式
        $info = get_tel();
 
+       //获取seo搜索
+       $da= get_seo();
+
+       $this->assign('da',$da);
+
          $this->assign('info',$info);
 
         //获取公司业务信息
         $data = Business::select();
      $this->assign('data',$data);
 
+     
+
      //获取公司文化信息
         $infos = Shouye::select()[0];
         $this->assign('infos',$infos);
 
+
+
+
         /**
-         * @example 获取第一张轮播图
-         *
+         * 获取banner图
          */
+    $inf = LunboFirst::select();
 
-$first = LunboFirst::select()[0];
-
-
-$this->assign('first',$first);
-        /**
-         * 获取banner图(除第一张)
-         */
-        $other = LunboOther::where('is_use','=',1)->select();
-
-       $second  =  $other[0]['img_path'];
-       $third   = $other[1]['img_path'];
-      $this->assign('second',$second);
-      $this->assign('third',$third);
-        $this->assign('other',$other);
+    $this->assign('inf',$inf);
 
 
 

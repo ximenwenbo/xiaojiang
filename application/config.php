@@ -39,9 +39,11 @@ return [
         'reset'    => true
     ],
 
+    'SHOW_PAGE_TRACE'  =>true,
+
     'plugin'                =>'/plugin/',
     // 应用调试模式
-    'app_debug'              => true,
+    'app_debug'              => false,
     'datetime_format' =>false,
     // 应用Trace
     'app_trace'              => true,
@@ -141,6 +143,8 @@ return [
     'request_cache_expire'   => null,
     // 全局请求缓存排除规则
     'request_cache_except'   => [],
+
+
 
     // +----------------------------------------------------------------------
     // | 模板设置

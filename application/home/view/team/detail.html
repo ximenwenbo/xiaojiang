@@ -1,0 +1,52 @@
+{include file="pub/head"}
+
+<!--publicBanner-->
+<div class="piblicBanner">
+    <img src="{:substr($picture.img,1)}">
+    <div class="breadcrumb_part">
+        <div class="breadcrumb">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="guide">
+                            <h2>木瓜团队 /
+                                <small>Mugua Team</small>
+                            </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--teamDetail-->
+<div class="teamDetail">
+    <div class="container perContent">
+        <div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+                <div class="per_pic">
+                    <img src="{:substr($team.img_path,1)}">
+                </div>
+            </div>
+            <div class="col-md-8 col-sm-8 col-xs-12">
+                <div class="per_txt">
+                    <h3>{$team.name}</h3>
+
+                    <p><span>职位：</span>{$team.title}</p>
+                    <p><span>毕业学校：</span>{$team.school}</p>
+                    <p><span>获得学位：</span>{$team.degree}</p>
+                    <p><span>个人箴言：</span></p>
+                    <p>{$team.motto}</p>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="per_txt_detail">
+                    <h3>个人简介</h3>
+                 <p>{$team.describe}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{include file="pub/foot"}

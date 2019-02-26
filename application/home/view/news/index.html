@@ -1,7 +1,7 @@
 {include file="pub/head"}
 <!--publicBanner-->
 <div class="piblicBanner">
-    <img src="{:config('home_images')}innerPublicBanner.jpg">
+    <img src="{:substr($img.img,1)}" >
     <div class="breadcrumb_part">
         <div class="breadcrumb">
             <div class="container">
@@ -34,13 +34,13 @@
 
                         <li>
 
-                            <input type="button"  style="margin-top: 40px;margin-right:300px " class="btn btn-primary"  value="{$v.category_name}">
+                            <input type="button"  id="aaa" style="margin-top: 40px;margin-right:300px " class="btn btn-primary abc"  value="{$v.category_name}">
 
                         </li>
                         {else/}
                         <li  class="active">
 
-                            <input type="button"  style="margin-top: 30px" class="btn btn-success"  value="{$v.category_name}">
+                            <input type="button"  style="margin-top: 30px" class="btn btn-success abc"  value="{$v.category_name}">
 
                         </li>
 
@@ -62,6 +62,23 @@
 
 </div>
 <!--newslist-->
+
+<style>
+    .col-md-6{
+        display: block;
+        margin-top: 30px;
+    }
+
+    .abc{
+        display: block;
+        margin-bottom: -40px;
+    }
+    #aaa{
+
+       margin-top: 20px;
+        margin-bottom: 15px;
+    }
+</style>
 
 <div class="newsList" >
 
@@ -86,7 +103,7 @@
                                     <p>
                                         {$vv.keywords}
                                     </p>
-                                    <span>{:substr($vv.create_time,0,10)}</span>
+                                    <span>{$vv.create_time|date="y-m-d",###} </span>
                                 </div>
                             </div>
                         </div>

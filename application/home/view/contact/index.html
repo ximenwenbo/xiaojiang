@@ -1,7 +1,7 @@
 {include file="pub/head"}
 <!--publicBanner-->
 <div class="piblicBanner">
-    <img src="{:config('home_images')}innerPublicBanner.jpg">
+    <img src="{:substr($img.img,1)}">
     <div class="breadcrumb_part">
         <div class="breadcrumb">
             <div class="container">
@@ -27,13 +27,11 @@
                     <div class="contactTxt">
                         <div class="row">
                             <div class="col-md-9">
-                                <h4>北京隆富盛元科技发展有限公司</h4>
+                                <h4>北京长顺邓氏制冷设备有限公司</h4>
                                 <p>公司不断寻求多渠道合作模式，基于对企业客户业务需求的详尽了解，提供多种成熟完善的移动营销解决方案，准确把握市场需求，
                                     由经验丰富的专业技术团队为企业量身定制、全程服务。</p>
                             </div>
-                            <div class="col-md-3">
-                                <button type="button" class="btn btn-success btn-lg">联系我们</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -46,7 +44,7 @@
                 <div class="col-lg-12 paddN">
                     <iframe src="{:url('map')}"  class="mm" width="100%"   ></iframe>
                     <style type="text/css">
-                        @media screen and (max-width: 1200px) {
+                        @media screen and (max-width: 600px) {
                             .mm {height: 200px}
                         }
                         @media screen and (min-width: 1200px){
@@ -82,7 +80,7 @@
                         <h4><strong>联系方式</strong></h4>
                         <p>联系电话<br>{$info.tel}</p>
                         <span>E-mail：{$info.email}</span>
-                        <a href="javascript:;">联系我们</a>
+                        <a href="tel:{$info.tel}">联系我们</a>
                     </div>
                 </div>
                 <div class="col-md-4">

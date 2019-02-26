@@ -5,7 +5,7 @@ namespace app\admin\controller;
 use app\admin\model\LunboFirst;
 use think\Controller;
 use think\Request;
-
+use think\Route;
 
 
 class LunboFirstController extends Controller
@@ -66,7 +66,7 @@ class LunboFirstController extends Controller
     
 
     /**
-     * 轮播图第一张修改
+     * 轮播图修改
      */
 
     public function xiugai(Request $request,LunboFirst $lunboFirst){
@@ -93,6 +93,7 @@ class LunboFirstController extends Controller
                 $path = './uploads/pics/'.date('Ymd');
                 if(!file_exists($path)){
                     mkdir($path,0777,true);
+
                 }
                 //制作图片终极路径名
                 $finalPathName = str_replace('picstmp','pics',$infos['img_path']);
@@ -134,6 +135,42 @@ class LunboFirstController extends Controller
 
     }
 
+
+    /**
+     * 轮播图添加
+     */
+    public function tianjia(Request $request){
+        if ($request->isPost()){
+
+            $data = $request->post();
+            //通过程序创建"年月日"的子级目录
+            $path = "./uploads/pics/".date('Ymd');
+            //判断目录不存在
+            if(!file_exists($path)){
+                mkdir($path,0777,true);
+            }
+            //设置图片的"终极"存储目录路径名
+            //./uploads/picstmp/20181129/0c4c6b67dd2b03a3e106334e83373ac8.jpg [临时的]
+            //./uploads/pics/20181129/0c4c6b67dd2b03a3e106334e83373ac8.jpg [终极的]
+            $finalPathName = str_replace('picstmp','pics',$data['img_path']);
+            //把图片从“临时”位置挪到“终极”存储位置
+            rename($data['img_path'],$finalPathName);
+            $data['img_path'] = $finalPathName;  //终极路径名要存储到数据库中去
+
+            $img = new LunboFirst();
+          $rst = $img->save($data);
+
+          if ($rst){
+              return  ['info'=>1] ;
+          }else{
+              return ['info'=>0];
+          }
+
+        }else{
+            return $this->fetch();
+        }
+
+    }
 
 
 

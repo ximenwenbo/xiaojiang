@@ -1,0 +1,44 @@
+<script type="text/javascript">
+
+    //页面加载完毕后，给form表单设置submit提交事件
+    $(function(){
+        $('#form-admin-add').submit(function(evt){
+            evt.preventDefault();//阻止浏览器提交动作
+            var shuju = $(this).serialize(); //收集form表单信息
+
+
+
+            //ajax传递数据到服务器端存储
+            $.ajax({
+                url:"{:url('seo')}",    // /admin/about/seo
+                data:shuju,
+                dataType:'json',
+                type:'post',
+                success:function(msg){
+                    if(msg.info==1){
+                        layer.alert('操作成功',{icon:6},function(){
+                            //下述① 和 ②执行执行顺序要求
+
+                            window.location.href='/admin/about/seo';
+                            //② 关闭修改地址的弹框表单页面
+                            layer_close();
+                        });
+                    }else{
+                        layer.alert('操作失败【'+msg.errorinfo+'】',{icon:5});
+                    }
+                }
+            });
+        });
+    });
+    //设置ueditor编辑器
+    var ue = UE.getEditor('detail_one',{toolbars: [[
+            'fullscreen', 'source', '|', 'undo', 'redo', '|',
+            'bold', 'italic', 'underline', 'fontborder', 'strikethrough', 'superscript', 'subscript', 'removeformat', 'formatmatch', 'autotypeset', 'blockquote', 'pasteplain', '|', 'forecolor', 'backcolor', 'insertorderedlist', 'insertunorderedlist', 'selectall', 'cleardoc', '|',
+            'rowspacingtop', 'rowspacingbottom', 'lineheight', '|',
+            'customstyle', 'paragraph', 'fontfamily', 'fontsize', '|',
+            'directionalityltr', 'directionalityrtl', 'indent', '|',
+            'justifyleft', 'justifycenter', 'justifyright', 'justifyjustify', '|', 'touppercase', 'tolowercase', '|',
+            'link', 'unlink', 'anchor', '|', 'imagenone', 'imageleft', 'imageright', 'imagecenter', '|',
+            'simpleupload', 'insertimage', 'emotion'
+        ]],lang:"zh-cn"});
+</script>

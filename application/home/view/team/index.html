@@ -1,7 +1,7 @@
 {include file="pub/head"}
 <!--publicBanner-->
 <div class="piblicBanner">
-    <img src="{:config('home_images')}innerPublicBanner.jpg">
+    <img src="{:substr($img.img,1)}" >
     <div class="breadcrumb_part">
         <div class="breadcrumb">
             <div class="container">
@@ -24,7 +24,7 @@
         <div class="row">
             {volist name="teams" id="v"}
             <div class="col-md-4 col-sm-6 col-xs-12">
-                <a href="#">
+                <a href="/home/team/detail?id= +{$v.id}">
                     <div class="team">
                         <img src="{:substr($v.img_path,1)}">
                         <div class="team_txt">
